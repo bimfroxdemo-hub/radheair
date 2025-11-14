@@ -1,4 +1,7 @@
+/* eslint-disable no-unused-vars */
+import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
   FiTool,
   FiBox,
@@ -9,14 +12,89 @@ import {
   FiStar,
   FiPhone,
 } from "react-icons/fi";
-import heroImage from "/Images/ac_hero1.png";
+
+import heroImage from "/Images/hero_laptop1.png";
+import heroMobile from "/Images/hero_mobile.png";
+
 import splitAC from "/Images/1.5ton1.png";
 import splitACHover from "/Images/1.5ton_on1.png";
-import windowAC from "/Images/1.5ton.png";
-import windowACHover from "/Images/1.5ton_on.png";
-import inverterAC from "/Images/1.5ton.png";
-import inverterACHover from "/Images/1.5ton_on.png";
+import windowAC from "/Images/windowOff1.png";
+import windowACHover from "/Images/windowOn1.png";
+import inverterAC from "/Images/2tonOff1.png";
+import inverterACHover from "/Images/2tonOn1.png";
 
+/* -------------------------
+   ServicePartners Component
+   ------------------------- */
+const ServicePartners = () => {
+  const brands = [
+    { name: "Mitsubishi Electric", logo: "/logos/me01.png" },
+    { name: "General", logo: "/logos/general1.png" },
+    { name: "Bluestar", logo: "/logos/bluestar.1.png" },
+    { name: "Samsung", logo: "/logos/sam1.png" },
+    { name: "Daikin", logo: "/logos/daikin01.png" },
+    { name: "Panasonic", logo: "/logos/panasonic01.png" },
+    { name: "Voltas", logo: "/logos/voltas.jpeg" },
+    { name: "Lloyd", logo: "/logos/lloyd.jpg" },
+    { name: "Hitachi", logo: "/logos/hitachi.jpg" },
+    { name: "Carrier", logo: "/logos/carrier01.png" },
+    { name: "Onida", logo: "/logos/onida.jpeg" },
+    { name: "Godrej", logo: "/logos/godrej.jpeg" },
+    { name: "LG", logo: "/logos/lg.jpg" },
+    { name: "Videocon", logo: "/logos/videocon.jpeg" },
+  ];
+
+  return (
+    <section className="py-12 bg-slate-50">
+      <div className="container mx-auto px-4">
+        <h4 className="text-center text-2xl font-bold mb-4">Authorized Service Partners</h4>
+        <p className="text-center text-slate-600 mb-6">Premium AC brands we support</p>
+
+        <style>{`
+          .marquee-wrap { overflow: hidden; position: relative; }
+          .marquee-track { display: flex; width: max-content; align-items: center; gap: 2rem; }
+          .marquee { display: inline-block; will-change: transform; animation: marquee-left 18s linear infinite; }
+          .marquee:hover { animation-play-state: paused; }
+          @keyframes marquee-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}</style>
+
+        <div className="marquee-wrap">
+          <div className="marquee" aria-hidden="false">
+            <div className="marquee-track">
+              {brands.map((b, i) => (
+                <div
+                  key={`a-${i}`}
+                  className="bg-white shadow-md flex items-center justify-center p-5 transition-transform duration-300 hover:scale-110 rounded-4xl"
+                  style={{ height: "110px", width: "140px" }}
+                >
+                  <img src={b.logo} alt={b.name} className="h-20 w-auto object-contain" />
+                </div>
+              ))}
+
+              {/* duplicate for smooth infinite scroll */}
+              {brands.map((b, i) => (
+                <div
+                  key={`a2-${i}`}
+                  className="bg-white shadow-md flex items-center justify-center p-5 transition-transform duration-300 hover:scale-110 rounded-4xl"
+                  style={{ height: "110px", width: "140px" }}
+                >
+                  <img src={b.logo} alt={`${b.name}-dup`} className="h-20 w-auto object-contain" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* -------------------------
+   Home Component (main)
+   ------------------------- */
 const Home = () => {
   const services = [
     { Icon: FiTool, title: "AC Repair", desc: "Expert diagnosis and repair" },
@@ -61,72 +139,99 @@ const Home = () => {
     { Icon: FiShield, text: "Warranty on Repair" },
   ];
 
+  const cardVariant = {
+    initial: { opacity: 0, y: 12 },
+    enter: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.06, duration: 0.5, ease: "easeOut" },
+    }),
+    hover: {
+      y: -8,
+      scale: 1.03,
+      transition: { type: "spring", stiffness: 260, damping: 22 },
+    },
+  };
+
+  const imgVariant = {
+    initial: { opacity: 1, scale: 1 },
+    hover: {
+      opacity: 0,
+      scale: 1.06,
+      transition: { duration: 0.45, ease: "easeOut" },
+    },
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800">
-      {/* Hero */}
-      <section className="bg-gradient-to-b from-white to-gray-100">
-        <div className="max-w-7xl mx-auto px-4 py-12 md:py-20 grid gap-10 md:grid-cols-2 items-center">
-          <div>
-            <span className="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-sm font-medium">
-              Trusted AC Experts Since 2015
-            </span>
-            <h1 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
-              Professional AC Repair & Sales Service
-            </h1>
-            <p className="mt-4 text-gray-600 max-w-xl">
-              Expert technicians, quality service, and competitive pricing for all your cooling needs. Same-day repairs available.
-            </p>
 
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <Link
-                to="/services"
-                className="inline-flex items-center justify-center rounded-md bg-blue-600 px-5 py-3 text-white font-medium hover:scale-105 transform transition"
-              >
-                Book Service Now
-              </Link>
-              <Link
-                to="/shop"
-                className="inline-flex items-center justify-center rounded-md border border-gray-200 px-5 py-3 text-gray-800 hover:bg-gray-50"
-              >
-                Buy New AC
-              </Link>
-            </div>
+      {/* ⭐ HERO SECTION (DESKTOP + MOBILE IMAGE) */}
+      <section
+        id="hero-section"
+        className="relative min-h-screen flex items-center justify-center bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${heroImage})`,
+        }}
+      >
+        {/* MOBILE BACKGROUND OVERRIDE */}
+        <style>
+          {`
+            @media (max-width: 640px) {
+              #hero-section {
+                background-image: url(${heroMobile}) !important;
+              }
+            }
+          `}
+        </style>
 
-            {/* trust badges */}
-            <div className="mt-6 flex flex-wrap gap-4">
-              {trustBadges.map((b, i) => (
-                <div key={i} className="flex items-center gap-3 bg-white shadow-sm rounded-lg px-3 py-2">
-                  <div className="p-2 rounded-md bg-blue-50">
-                    <b.Icon className="w-5 h-5 text-blue-600" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
+
+        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-24">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+            <div className="text-center md:text-left space-y-6 text-white">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-[0_8px_30px_rgba(0,0,0,0.6)]">
+                Professional AC Repair & Sales Service
+              </h1>
+
+              <p className="text-lg text-gray-100 max-w-xl md:mx-0">
+                Expert technicians, quality service, and competitive pricing for all your cooling needs. Same-day repairs available.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                <Link
+                  to="/services"
+                  className="inline-flex items-center justify-center rounded-md bg-green-500 px-5 py-3 text-white font-medium hover:scale-105 transition"
+                >
+                  Book Service Now
+                </Link>
+
+                <Link
+                  to="/products"
+                  className="inline-flex items-center justify-center rounded-md border border-white/30 px-5 py-3 text-white hover:bg-white/10"
+                >
+                  Buy New AC
+                </Link>
+              </div>
+
+              <div className="mt-6 grid grid-cols-2 lg:grid-cols-3 gap-4">
+                {trustBadges.map((b, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-3 py-2 rounded-xl"
+                  >
+                    <div className="p-2 rounded-full bg-white/10">
+                      <b.Icon className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="text-sm font-medium text-white">{b.text}</div>
                   </div>
-                  <div className="text-sm font-medium">{b.text}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Floating Hero Image */}
-          <div className="relative animate-float">
-            <div className="rounded-2xl overflow-hidden shadow-2xl">
-              <img
-                src={heroImage}
-                alt="Professional AC technician at work"
-                className="w-full h-72 sm:h-96 object-cover object-center transition-transform transform hover:scale-105"
-              />
-            </div>
-
-            <div className="absolute -bottom-6 left-4 bg-white rounded-xl shadow-md px-4 py-3 flex items-center gap-3">
-              <FiStar className="w-6 h-6 text-yellow-400" />
-              <div>
-                <div className="font-bold text-lg">4.9/5</div>
-                <div className="text-xs text-gray-500">2,500+ Reviews</div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services */}
+      {/* SERVICES */}
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-8">
@@ -136,11 +241,11 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 text-center items-stretch">
             {services.map((s, idx) => (
               <article
                 key={idx}
-                className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
+                className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition hover:-translate-y-1 flex flex-col items-center justify-center h-full"
               >
                 <div className="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-blue-50 to-cyan-50 mb-4">
                   <s.Icon className="w-6 h-6 text-blue-600" />
@@ -159,7 +264,10 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Products */}
+      {/* Service Partners (inlined) */}
+      <ServicePartners />
+
+      {/* PRODUCTS */}
       <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-8">
@@ -171,21 +279,30 @@ const Home = () => {
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((p, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
+                custom={i}
+                variants={cardVariant}
+                initial="initial"
+                animate="enter"
+                whileHover="hover"
+                className="bg-white rounded-2xl overflow-hidden shadow-sm"
               >
-                {/* Hover Image Swap with Fade + Smooth Zoom */}
-                <div className="h-56 overflow-hidden relative group">
-                  <img
+                <div className="h-56 overflow-hidden relative">
+                  <motion.img
                     src={p.image}
                     alt={p.name}
-                    className="w-full h-full object-cover transition-all duration-500 transform group-hover:opacity-0 group-hover:scale-105"
+                    variants={imgVariant}
+                    initial="initial"
+                    whileHover="hover"
+                    className="w-full h-full object-cover absolute inset-0"
                   />
-                  <img
+                  <motion.img
                     src={p.hoverImage}
                     alt={`${p.name} hover`}
-                    className="w-full h-full object-cover absolute inset-0 opacity-0 transition-all duration-500 transform group-hover:opacity-100 group-hover:scale-105"
+                    initial={{ opacity: 0, scale: 1 }}
+                    whileHover={{ opacity: 1, scale: 1.06, transition: { duration: 0.45 } }}
+                    className="w-full h-full object-cover absolute inset-0"
                   />
                 </div>
 
@@ -199,12 +316,15 @@ const Home = () => {
                       <span className="text-sm font-medium">{p.rating}</span>
                     </div>
                   </div>
+
                   <h3 className="font-semibold text-lg">{p.name}</h3>
+
                   <ul className="mt-3 text-sm text-gray-600 space-y-1">
                     {p.features.map((f, idx) => (
                       <li key={idx}>• {f}</li>
                     ))}
                   </ul>
+
                   <div className="mt-4 flex items-center justify-between">
                     <div className="text-2xl font-bold text-blue-600">
                       {p.price}
@@ -217,14 +337,14 @@ const Home = () => {
                     </Link>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           <div className="mt-8 text-center">
             <Link
-              to="/shop"
-              className="inline-flex items-center px-6 py-3 rounded-md border border-transparent bg-blue-600 text-white font-medium hover:opacity-95"
+              to="/products"
+              className="inline-flex items-center px-6 py-3 rounded-md bg-blue-600 text-white font-medium hover:opacity-95"
             >
               View All Products
             </Link>
@@ -242,13 +362,15 @@ const Home = () => {
             <p className="mt-2 max-w-2xl mx-auto">
               Our expert technicians are available 24/7 for emergency repairs and installations
             </p>
+
             <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3">
               <a
-                href="tel:+919876543210"
+                href="tel:+918401012989"
                 className="inline-flex items-center gap-2 rounded-md bg-white/10 px-5 py-3 text-white font-medium"
               >
-                <FiPhone className="w-5 h-5" /> Call Now: +91 98765 43210
+                <FiPhone className="w-5 h-5" /> Call Now: +91 8401012989
               </a>
+
               <Link
                 to="/services"
                 className="inline-flex items-center justify-center rounded-md bg-white px-5 py-3 text-blue-600 font-medium"
@@ -259,6 +381,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+
     </div>
   );
 };
