@@ -22,79 +22,8 @@ import windowAC from "/Images/windowOff1.png";
 import windowACHover from "/Images/windowOn1.png";
 import inverterAC from "/Images/2tonOff1.png";
 import inverterACHover from "/Images/2tonOn1.png";
+import ServicePartners from "../components/ServicePartners";
 
-/* -------------------------
-   ServicePartners Component
-   ------------------------- */
-const ServicePartners = () => {
-  const brands = [
-    { name: "Mitsubishi Electric", logo: "/logos/me01.png" },
-    { name: "General", logo: "/logos/general1.png" },
-    { name: "Bluestar", logo: "/logos/bluestar.1.png" },
-    { name: "Samsung", logo: "/logos/sam1.png" },
-    { name: "Daikin", logo: "/logos/daikin01.png" },
-    { name: "Panasonic", logo: "/logos/panasonic01.png" },
-    { name: "Voltas", logo: "/logos/voltas.jpeg" },
-    { name: "Lloyd", logo: "/logos/lloyd.jpg" },
-    { name: "Hitachi", logo: "/logos/hitachi.jpg" },
-    { name: "Carrier", logo: "/logos/carrier01.png" },
-    { name: "Onida", logo: "/logos/onida.jpeg" },
-    { name: "Godrej", logo: "/logos/godrej.jpeg" },
-    { name: "LG", logo: "/logos/lg.jpg" },
-    { name: "Videocon", logo: "/logos/videocon.jpeg" },
-  ];
-
-  return (
-    <section className="py-12 bg-slate-50">
-      <div className="container mx-auto px-4">
-        <h4 className="text-center text-2xl font-bold mb-4">Authorized Service Partners</h4>
-        <p className="text-center text-slate-600 mb-6">Premium AC brands we support</p>
-
-        <style>{`
-          .marquee-wrap { overflow: hidden; position: relative; }
-          .marquee-track { display: flex; width: max-content; align-items: center; gap: 2rem; }
-          .marquee { display: inline-block; will-change: transform; animation: marquee-left 18s linear infinite; }
-          .marquee:hover { animation-play-state: paused; }
-          @keyframes marquee-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-        `}</style>
-
-        <div className="marquee-wrap">
-          <div className="marquee" aria-hidden="false">
-            <div className="marquee-track">
-              {brands.map((b, i) => (
-                <div
-                  key={`a-${i}`}
-                  className="bg-white shadow-md flex items-center justify-center p-5 transition-transform duration-300 hover:scale-110 rounded-4xl"
-                  style={{ height: "110px", width: "140px" }}
-                >
-                  <img src={b.logo} alt={b.name} className="h-20 w-auto object-contain" />
-                </div>
-              ))}
-
-              {/* duplicate for smooth infinite scroll */}
-              {brands.map((b, i) => (
-                <div
-                  key={`a2-${i}`}
-                  className="bg-white shadow-md flex items-center justify-center p-5 transition-transform duration-300 hover:scale-110 rounded-4xl"
-                  style={{ height: "110px", width: "140px" }}
-                >
-                  <img src={b.logo} alt={`${b.name}-dup`} className="h-20 w-auto object-contain" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-/* -------------------------
-   Home Component (main)
-   ------------------------- */
 const Home = () => {
   const services = [
     { Icon: FiTool, title: "AC Repair", desc: "Expert diagnosis and repair" },
@@ -109,7 +38,6 @@ const Home = () => {
       hoverImage: splitACHover,
       name: "Split AC 1.5 Ton",
       brand: "Daikin",
-      price: "₹32,990",
       rating: 4.5,
       features: ["5 Star Rating", "Inverter", "3 Year Warranty"],
     },
@@ -118,7 +46,6 @@ const Home = () => {
       hoverImage: windowACHover,
       name: "Window AC 1 Ton",
       brand: "LG",
-      price: "₹24,990",
       rating: 4.3,
       features: ["3 Star Rating", "Copper Coil", "2 Year Warranty"],
     },
@@ -127,7 +54,6 @@ const Home = () => {
       hoverImage: inverterACHover,
       name: "Inverter AC 2 Ton",
       brand: "Voltas",
-      price: "₹42,990",
       rating: 4.7,
       features: ["5 Star Rating", "Smart WiFi", "5 Year Warranty"],
     },
@@ -165,15 +91,15 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800">
 
-      {/* ⭐ HERO SECTION (DESKTOP + MOBILE IMAGE) */}
+      {/* HERO SECTION */}
       <section
         id="hero-section"
-        className="relative min-h-screen flex items-center justify-center bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-        }}
+        className="
+          relative min-h-screen flex justify-center bg-cover bg-center
+          pt-10 sm:pt-16 md:pt-24 lg:pt-32
+        "
+        style={{ backgroundImage: `url(${heroImage})` }}
       >
-        {/* MOBILE BACKGROUND OVERRIDE */}
         <style>
           {`
             @media (max-width: 640px) {
@@ -215,10 +141,7 @@ const Home = () => {
 
               <div className="mt-6 grid grid-cols-2 lg:grid-cols-3 gap-4">
                 {trustBadges.map((b, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-3 py-2 rounded-xl"
-                  >
+                  <div key={i} className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-3 py-2 rounded-xl">
                     <div className="p-2 rounded-full bg-white/10">
                       <b.Icon className="w-5 h-5 text-white" />
                     </div>
@@ -236,26 +159,18 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-8">
             <h2 className="text-2xl md:text-3xl font-bold">Our Services</h2>
-            <p className="mt-2 text-gray-600">
-              Comprehensive AC solutions for your home and office
-            </p>
+            <p className="mt-2 text-gray-600">Comprehensive AC solutions for your home and office</p>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 text-center items-stretch">
             {services.map((s, idx) => (
-              <article
-                key={idx}
-                className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition hover:-translate-y-1 flex flex-col items-center justify-center h-full"
-              >
+              <article key={idx} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition hover:-translate-y-1 flex flex-col items-center justify-center h-full hover:shadow-[#0f4f7a]">
                 <div className="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-blue-50 to-cyan-50 mb-4">
                   <s.Icon className="w-6 h-6 text-blue-600" />
                 </div>
                 <h3 className="font-semibold text-lg">{s.title}</h3>
                 <p className="mt-2 text-sm text-gray-600">{s.desc}</p>
-                <Link
-                  to="/services"
-                  className="mt-4 inline-block text-sm text-blue-600 hover:underline"
-                >
+                <Link to="/services" className="mt-4 inline-block text-sm text-blue-600 hover:underline">
                   Learn more →
                 </Link>
               </article>
@@ -264,7 +179,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Service Partners (inlined) */}
       <ServicePartners />
 
       {/* PRODUCTS */}
@@ -272,9 +186,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-8">
             <h2 className="text-2xl md:text-3xl font-bold">Featured AC Units</h2>
-            <p className="mt-2 text-gray-600">
-              Top-rated air conditioners from leading brands
-            </p>
+            <p className="mt-2 text-gray-600">Top-rated air conditioners from leading brands</p>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -308,11 +220,9 @@ const Home = () => {
 
                 <div className="p-5">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm px-2 py-1 rounded-md bg-gray-100 text-gray-700">
-                      {p.brand}
-                    </span>
+                    <span className="text-sm px-2 py-1 rounded-md bg-gray-100 text-gray-700">{p.brand}</span>
                     <div className="flex items-center gap-1">
-                      <FiStar className="w-4 h-4 text-yellow-400" />
+                      <FiStar className="w-4 h-4" />
                       <span className="text-sm font-medium">{p.rating}</span>
                     </div>
                   </div>
@@ -325,15 +235,14 @@ const Home = () => {
                     ))}
                   </ul>
 
-                  <div className="mt-4 flex items-center justify-between">
-                    <div className="text-2xl font-bold text-blue-600">
-                      {p.price}
-                    </div>
+                  <div className="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                    <div className="text-sm text-gray-500">Contact us for the latest price and installation options.</div>
+
                     <Link
-                      to="/shop"
+                      to={`/products/${i}`}
                       className="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-blue-600 to-cyan-500 px-3 py-2 text-white text-sm"
                     >
-                      Buy Now
+                      Get Quote
                     </Link>
                   </div>
                 </div>
@@ -342,10 +251,7 @@ const Home = () => {
           </div>
 
           <div className="mt-8 text-center">
-            <Link
-              to="/products"
-              className="inline-flex items-center px-6 py-3 rounded-md bg-blue-600 text-white font-medium hover:opacity-95"
-            >
+            <Link to="/products" className="inline-flex items-center px-6 py-3 rounded-md bg-blue-600 text-white font-medium hover:opacity-95">
               View All Products
             </Link>
           </div>
@@ -353,28 +259,18 @@ const Home = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-12">
+      <section className="py-5">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <div className="rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-6 py-10">
-            <h2 className="text-2xl md:text-3xl font-bold">
-              Need AC Service Today?
-            </h2>
-            <p className="mt-2 max-w-2xl mx-auto">
-              Our expert technicians are available 24/7 for emergency repairs and installations
-            </p>
+            <h2 className="text-2xl md:text-3xl font-bold">Need AC Service Today?</h2>
+            <p className="mt-2 max-w-2xl mx-auto">Our expert technicians are available 24/7 for emergency repairs and installations</p>
 
             <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3">
-              <a
-                href="tel:+918401012989"
-                className="inline-flex items-center gap-2 rounded-md bg-white/10 px-5 py-3 text-white font-medium"
-              >
+              <a href="tel:+918401012989" className="inline-flex items-center gap-2 rounded-md bg-white/10 px-5 py-3 text-white font-medium">
                 <FiPhone className="w-5 h-5" /> Call Now: +91 8401012989
               </a>
 
-              <Link
-                to="/services"
-                className="inline-flex items-center justify-center rounded-md bg-white px-5 py-3 text-blue-600 font-medium"
-              >
+              <Link to="/services" className="inline-flex items-center justify-center rounded-md bg-white px-5 py-3 text-blue-600 font-medium">
                 Book Online
               </Link>
             </div>

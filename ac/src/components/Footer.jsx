@@ -25,7 +25,7 @@ const Footer = () => {
             <p className="text-sm">
               Trusted partner for AC repair, installation and sales. Quality
               service since 2021.
-            </p>  
+            </p>
           </div>
 
           {/* Quick Links */}
@@ -69,13 +69,48 @@ const Footer = () => {
 
           {/* Services */}
           <div className="text-center">
-            <h3 className="mb-4 text-sm font-semibold">Services</h3>
+            <h3 className="mb-4 text-sm font-medium">Services</h3>
             <ul className="space-y-2 text-sm">
-              <li>AC Repair & Service</li>
-              <li>Installation</li>
-              <li>Gas Filling</li>
-              <li>AMC Plans</li>
-              <li>Deep Cleaning</li>
+              <li>
+                <Link
+                  to="/services"
+                  className="block hover:text-indigo-600 transition"
+                >
+                  AC Repair & Service
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/services"
+                  className="block hover:text-indigo-600 transition"
+                >
+                  Installation
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/services"
+                  className="block hover:text-indigo-600 transition"
+                >
+                  Gas Filling
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/services"
+                  className="block hover:text-indigo-600 transition"
+                >
+                  AMC Plans
+                </Link>
+              </li>
+                <li>
+                <Link
+                  to="/services"
+                  className="block hover:text-indigo-600 transition"
+                >
+                  Deep Cleaning
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -95,8 +130,8 @@ const Footer = () => {
 
               <li className="flex items-center gap-3">
                 <FaPhone className="h-4 w-4 text-green-600" />
-                <a href="tel:+919876543210" className="hover:text-indigo-600">
-                  +91 8401012989
+                <a href="tel:+918401012989" className="hover:text-indigo-600">
+                  +918401012989
                 </a>
               </li>
 
@@ -107,22 +142,21 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-indigo-600"
-                  >
-                    +91 7486933410
+                >
+                  +917486933410
                 </a>
-</li>
-
+              </li>
             </ul>
           </div>
         </div>
+      </div>
 
-        <div className="mt-8 border-t border-gray-200 dark:border-gray-800 pt-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-3">
-            <p className="text-sm">
-              &copy; {new Date().getFullYear()} RadheAir AC Services. All rights
-              reserved.
-            </p>
-          </div>
+      {/* FULL WIDTH COPYRIGHT BAR */}
+      <div className="w-full bg-[#0f4f7a] text-white mt-8">
+        <div className="max-w-7xl mx-auto px-4 py-5 flex flex-col md:flex-row items-center justify-between gap-3">
+          <p className="text-sm text-center md:text-left">
+            &copy; {new Date().getFullYear()} RadheAir AC Services. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

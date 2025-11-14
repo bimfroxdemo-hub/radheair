@@ -17,9 +17,10 @@ const Navbar = () => {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
+
           {/* Brand */}
           <Link to="/" className="flex items-center gap-3">
-            <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-gradient-to-br from-indigo-600 to-emerald-400 transform transition-transform group-hover:scale-105">
+            <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-[#1f71b4] transform transition-transform">
               <span className="text-white font-bold">AC</span>
             </div>
             <span className="text-lg font-semibold text-gray-800">RadheAir</span>
@@ -31,7 +32,7 @@ const Navbar = () => {
               <Link
                 key={l.to}
                 to={l.to}
-                className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+                className="text-sm font-medium text-gray-700 hover:text-[#1f71b4] transition-colors"
               >
                 {l.label}
               </Link>
@@ -42,18 +43,11 @@ const Navbar = () => {
           <div className="hidden md:flex md:items-center md:gap-3">
             <a
               href="tel:+918401012989"
-              className="inline-flex items-center px-3 py-2 rounded-md bg-gradient-to-r from-indigo-600 to-emerald-400 text-white text-sm font-medium shadow-sm hover:opacity-95 transition"
+              className="inline-flex items-center px-3 py-2 rounded-md bg-[#1f71b4] text-white text-sm font-medium shadow-sm hover:opacity-95 transition"
             >
               <AiOutlinePhone className="h-4 w-4" />
               <span>+91 8401012989</span>
             </a>
-
-            {/* <Link
-              to="/book"
-              className="inline-flex items-center px-3 py-2 rounded-md bg-gradient-to-r from-indigo-600 to-emerald-400 text-white text-sm font-medium shadow-sm hover:opacity-95 transition"
-            >
-              Book Service
-            </Link> */}
           </div>
 
           {/* Mobile toggle */}
@@ -61,7 +55,7 @@ const Navbar = () => {
             type="button"
             aria-label={isMobileOpen ? "Close menu" : "Open menu"}
             onClick={() => setIsMobileOpen((s) => !s)}
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#1f71b4]"
           >
             {isMobileOpen ? (
               <AiOutlineClose className="h-6 w-6" />
@@ -95,19 +89,11 @@ const Navbar = () => {
           <div className="flex flex-col gap-2 pt-2">
             <a
               href="tel:+918401012989"
-              className="inline-flex items-center justify-center px-4 py-2 rounded-md bg-gradient-to-r from-indigo-600 to-emerald-400 text-white text-sm font-medium"
+              className="inline-flex items-center justify-center px-4 py-2 rounded-md bg-[#1f71b4] text-white text-sm font-medium"
             >
               <AiOutlinePhone className="h-4 w-4" />
-              <span>+91 8401012989</span>
+              <span>+918401012989</span>
             </a>
-
-            {/* <Link
-              to="/book"
-              onClick={() => setIsMobileOpen(false)}
-              className="inline-flex items-center justify-center px-4 py-2 rounded-md bg-gradient-to-r from-indigo-600 to-emerald-400 text-white text-sm font-medium"
-            >
-              Book Service
-            </Link> */}
           </div>
         </div>
       </div>

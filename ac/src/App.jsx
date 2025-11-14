@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
-// import BottomNavBar from "./components/BottomNavBar";
 
 // Pages
 import Home from "./pages/Home";
@@ -13,7 +12,7 @@ import About from "./pages/About";
 import Products from "./pages/Products";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
-// import Book from "./pages/Book";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
@@ -30,7 +29,9 @@ const App = () => {
             <Route path="/products" element={<Products />} />
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
-            {/* <Route path="/book" element={<Book />} /> */}
+
+            {/* Fallback 404 route */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
 
@@ -39,9 +40,6 @@ const App = () => {
 
         {/* Floating WhatsApp chat (visible on all pages) */}
         <WhatsAppButton />
-
-        {/* Mobile bottom navigation (shows on small/medium screens) */}
-        {/* <BottomNavBar /> */}
       </div>
     </Router>
   );

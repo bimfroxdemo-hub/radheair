@@ -1,6 +1,7 @@
 import React from "react";
 import { FaAward, FaUsers, FaBriefcase, FaClock } from "react-icons/fa";
 import ServicePartners from "../components/ServicePartners";
+import Hero from "../components/Hero";
 
 const About = () => {
   const stats = [
@@ -12,16 +13,10 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-white text-slate-800">
-
-      {/* Hero */}
-      <section className="bg-gradient-to-b from-slate-50 to-slate-100 py-12">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-3">About RadheAir</h2>
-          <p className="max-w-2xl mx-auto text-slate-600 text-base md:text-lg">
-            Your trusted partner for professional AC services since 2021.
-          </p>
-        </div>
-      </section>
+      <Hero
+        title="About RadheAir"
+        subtitle="Your trusted partner for professional AC services since 2021."
+      />
 
       {/* Stats */}
       <section className="py-10">
@@ -54,15 +49,13 @@ const About = () => {
             <h3 className="text-2xl font-bold mb-4">Our Story</h3>
             <div className="space-y-4 text-slate-600">
               <p>
-                Founded in 2021, RadheAir has grown from a small local repair shop to one of the
-                most trusted AC service providers in the region.
+               Founded in 2021, RadheAir began as a small local AC repair shop and has grown into one of the region's most trusted service providers. Over the years, we expanded our expertise into advanced repairs, preventive maintenance, and sales of premium AC units from leading brands.
               </p>
               <p>
-                We expanded into repairs, maintenance, and sales of premium AC units from top brands.
+                Today, our team includes 2 experienced engineers, 3 fresh trainees, and 2 skilled helpers who work together to deliver fast, reliable, and professional service.
               </p>
               <p>
-                Today, we have served 1000+ customers and maintain strong residential &
-                commercial relationships.
+                With a customer-first approach and a commitment to quality workmanship, we have proudly served 500+ residential and commercial clients and continue building long-term relationships through honesty, expertise, and timely support.
               </p>
             </div>
           </div>
@@ -74,7 +67,7 @@ const About = () => {
         <div className="container mx-auto px-4">
           <h4 className="text-center text-2xl font-bold mb-8">Our Values</h4>
           <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
-            <div className="p-6 bg-white rounded-lg shadow-sm hover:shadow-md">
+            <div className="p-6 bg-white rounded-lg shadow-sm hover:shadow-md ">
               <h5 className="font-semibold mb-2">Quality First</h5>
               <p className="text-slate-600 text-sm">
                 We never compromise on quality. Every service comes with a satisfaction guarantee.
@@ -89,7 +82,7 @@ const About = () => {
             <div className="p-6 bg-white rounded-lg shadow-sm hover:shadow-md">
               <h5 className="font-semibold mb-2">Customer Focus</h5>
               <p className="text-slate-600 text-sm">
-                Your comfort is our priority with flexible scheduling & 24/7 service.
+                Your comfort is our priority with flexible scheduling &amp; 24/7 service.
               </p>
             </div>
           </div>
