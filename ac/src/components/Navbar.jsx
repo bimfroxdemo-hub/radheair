@@ -41,19 +41,19 @@ const Navbar = () => {
           {/* Actions (desktop) */}
           <div className="hidden md:flex md:items-center md:gap-3">
             <a
-              href="tel:+919876543210"
-              className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 text-sm text-gray-700 hover:bg-gray-50 transition"
+              href="tel:+918401012989"
+              className="inline-flex items-center px-3 py-2 rounded-md bg-gradient-to-r from-indigo-600 to-emerald-400 text-white text-sm font-medium shadow-sm hover:opacity-95 transition"
             >
               <AiOutlinePhone className="h-4 w-4" />
-              <span>+91 98765 43210</span>
+              <span>+91 8401012989</span>
             </a>
 
-            <Link
+            {/* <Link
               to="/book"
               className="inline-flex items-center px-3 py-2 rounded-md bg-gradient-to-r from-indigo-600 to-emerald-400 text-white text-sm font-medium shadow-sm hover:opacity-95 transition"
             >
               Book Service
-            </Link>
+            </Link> */}
           </div>
 
           {/* Mobile toggle */}
@@ -94,20 +94,20 @@ const Navbar = () => {
 
           <div className="flex flex-col gap-2 pt-2">
             <a
-              href="tel:+919876543210"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-gray-200 text-sm text-gray-700 hover:bg-gray-50"
+              href="tel:+918401012989"
+              className="inline-flex items-center justify-center px-4 py-2 rounded-md bg-gradient-to-r from-indigo-600 to-emerald-400 text-white text-sm font-medium"
             >
               <AiOutlinePhone className="h-4 w-4" />
-              <span>+91 98765 43210</span>
+              <span>+91 8401012989</span>
             </a>
 
-            <Link
+            {/* <Link
               to="/book"
               onClick={() => setIsMobileOpen(false)}
               className="inline-flex items-center justify-center px-4 py-2 rounded-md bg-gradient-to-r from-indigo-600 to-emerald-400 text-white text-sm font-medium"
             >
               Book Service
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
