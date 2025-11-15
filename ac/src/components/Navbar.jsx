@@ -92,7 +92,7 @@ const Navbar = () => {
               className="inline-flex items-center justify-center px-4 py-2 rounded-md bg-[#1f71b4] text-white text-sm font-medium"
             >
               <AiOutlinePhone className="h-4 w-4" />
-              <span>+918401012989</span>
+              <span>+91 8401012989</span>
             </a>
           </div>
         </div>

@@ -100,7 +100,7 @@ const Services = () => {
                         className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium"
                         style={{ backgroundColor: "#eef6fb", color: PRIMARY }}
                       >
-                        <span>Visit Charge</span>
+                        <span>Service Charge</span>
                         <strong>₹300</strong>
                       </div>
                     </div>
