@@ -18,13 +18,15 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
 
-          {/* Brand */}
-          <Link to="/" className="flex items-center gap-3">
-            <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-[#1f71b4] transform transition-transform">
-              <span className="text-white font-bold">AC</span>
-            </div>
-            <span className="text-lg font-semibold text-gray-800">RadheAir</span>
+          {/* Brand with Image Logo */}
+          <Link to="/" className="flex items-center">
+            <img
+              src="/logos/companylogo.jpg"
+              alt="RadheAir Logo"
+              className="h-35 w-35 object-contain"
+            />
           </Link>
+
 
           {/* Desktop nav */}
           <nav className="hidden md:flex md:items-center md:gap-8">

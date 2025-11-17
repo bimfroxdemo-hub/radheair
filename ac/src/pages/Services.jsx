@@ -10,7 +10,9 @@ import {
   FaWhatsapp,
   FaPhone,
 } from "react-icons/fa";
+import { GrVmMaintenance } from "react-icons/gr";
 import Hero from "../components/Hero";
+import WhyChooseRadheAir from "../components/WhyChooseRadheAir";
 
 const Services = () => {
   const PRIMARY = "#1f71b4";
@@ -52,9 +54,26 @@ const Services = () => {
       description: "Circuit board repair and replacement",
       features: ["Expert diagnosis", "Genuine parts", "Quick turnaround", "6-month warranty"],
     },
+    {
+      icon: FaWrench,
+      title: "Refrigerator Repair",
+      description: "Complete repair for single-door, double-door & side-by-side fridges",
+      features: ["Cooling issue fix", "Compressor check", "Thermostat repair", "Water leakage fix"],
+    },
+    {
+      icon: FaWind,
+      title: "Refrigerator Gas Filling",
+      description: "Accurate refrigerant refill for efficient cooling",
+      features: ["R134a & R600a gas", "Leak detection", "Pressure testing", "Certified refrigerant"],
+    },
+    {
+      icon: GrVmMaintenance,
+      title: "Refrigerator Maintenance",
+      description: "Regular servicing to enhance refrigerator life",
+      features: ["Condenser cleaning", "Thermostat calibration", "Door gasket check", "Full system inspection"],
+    },
   ];
 
-  // digits only (country code + number), no spaces or "+"
   const whatsappNumber = "917486933410";
 
   const generateWhatsAppLink = (service) => {
@@ -72,7 +91,6 @@ const Services = () => {
         subtitle="Comprehensive AC solutions — transparent visit charge and trusted technicians."
       />
 
-      {/* Grid */}
       <main className="px-4 pb-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -95,7 +113,6 @@ const Services = () => {
                       <h3 className="text-lg font-semibold leading-tight">{service.title}</h3>
                       <p className="text-xs text-gray-500 mt-1">{service.description}</p>
 
-                      {/* Visit charge */}
                       <div
                         className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium"
                         style={{ backgroundColor: "#eef6fb", color: PRIMARY }}
@@ -117,7 +134,6 @@ const Services = () => {
                     </ul>
 
                     <div className="flex items-center gap-3 mt-auto">
-                      {/* WhatsApp Button */}
                       <a
                         href={generateWhatsAppLink(service)}
                         target="_blank"
@@ -130,7 +146,6 @@ const Services = () => {
                         WhatsApp
                       </a>
 
-                      {/* Call Button */}
                       <a
                         href="tel:+918401012989"
                         className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium border border-gray-300 hover:bg-gray-100 transition"
@@ -145,36 +160,8 @@ const Services = () => {
             })}
           </div>
 
-          {/* Why choose us */}
-          <section className="mt-12 bg-gradient-to-r from-gray-50 to-white rounded-2xl p-6 md:p-8">
-            <h2 className="text-center text-xl sm:text-2xl font-bold mb-6">Why Choose RadheAir?</h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="flex flex-col items-center text-center p-4">
-                <div className="p-4 rounded-full" style={{ backgroundColor: `${PRIMARY}1A` }}>
-                  <FaShieldAlt className="h-6 w-6" style={{ color: PRIMARY }} />
-                </div>
-                <h4 className="mt-3 font-semibold">Quality Assurance</h4>
-                <p className="mt-2 text-sm text-gray-600">All repairs come with warranty and quality guarantee.</p>
-              </div>
-
-              <div className="flex flex-col items-center text-center p-4">
-                <div className="p-4 rounded-full" style={{ backgroundColor: `${PRIMARY}1A` }}>
-                  <FaCheckCircle className="h-6 w-6" style={{ color: PRIMARY }} />
-                </div>
-                <h4 className="mt-3 font-semibold">Certified Technicians</h4>
-                <p className="mt-2 text-sm text-gray-600">Experienced professionals with proper training.</p>
-              </div>
-
-              <div className="flex flex-col items-center text-center p-4">
-                <div className="p-4 rounded-full" style={{ backgroundColor: `${PRIMARY}1A` }}>
-                  <FaBolt className="h-6 w-6" style={{ color: PRIMARY }} />
-                </div>
-                <h4 className="mt-3 font-semibold">Fast Service</h4>
-                <p className="mt-2 text-sm text-gray-600">Same-day service available for urgent repairs.</p>
-              </div>
-            </div>
-          </section>
+          {/* Why choose us section as component */}
+          <WhyChooseRadheAir primary={PRIMARY} />
         </div>
       </main>
     </div>

@@ -49,7 +49,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white text-slate-900">
 
-      {/* ✅ Using Your Hero Component */}
+      {/* Hero Component */}
       <Hero
         title="Contact Us"
         subtitle="Reach out for service requests, quotes, or general enquiries — we're here to help across Surat and nearby cities."
@@ -109,20 +109,35 @@ const Contact = () => {
                       </p>
 
                       <div className="mt-3 flex flex-wrap gap-2">
-                        {["Bhestan", "Varachha", "Vesu", "Adajan", "Pal Rakh", "Citylight", "Piplod"].map(
-                          (area, idx) => (
-                            <span
-                              key={idx}
-                              className="rounded-full bg-white px-3 py-1 text-sm shadow-sm border border-slate-100"
-                            >
-                              {area}
-                            </span>
-                          )
-                        )}
+                        {[
+                          { name: "Vesu", focus: false },
+                          { name: "Adajan", focus: false },
+                          { name: "Pandesara", focus: false },
+                          { name: "Bhestan", focus: false },
+                          { name: "Piplod", focus: false },
+                          { name: "Varachha", focus: false },
+                          { name: "Pal Rakh", focus: false },
+                          { name: "Citylight", focus: false },
+                          { name: "Kamrej", focus: false },
+                          { name: "Across Surat", focus: true },
+      
+                        ].map((area, idx) => (
+                          <span
+                            key={idx}
+                            className={`rounded-full px-3 py-1 text-sm shadow-sm border
+                              ${
+                                area.focus
+                                  ? "bg-[#1f71b4] text-white border-[#1f71b4]" // highlighted
+                                  : "bg-white text-slate-700 border-slate-100" // normal
+                              }
+                            `}
+                          >
+                            {area.name}
+                          </span>
+                        ))}
                       </div>
                     </div>
-
-                    <div className="mt-4 sm:mt-0">
+                    <div className="mt-2 sm:mt-0">
                       <a
                         href={DIRECTIONS_URL}
                         className="inline-flex items-center gap-2 rounded-lg bg-[#1f71b4] px-4 py-2 text-sm font-medium text-white shadow-sm hover:opacity-95 transition"

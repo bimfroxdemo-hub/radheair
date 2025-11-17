@@ -12,6 +12,8 @@ import {
   FiStar,
   FiPhone,
 } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
+
 
 import heroImage from "/Images/hero_laptop1.png";
 import heroMobile from "/Images/hero_mobile.png";
@@ -238,12 +240,17 @@ const Home = () => {
                   <div className="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                     <div className="text-sm text-gray-500">Contact us for the latest price and installation options.</div>
 
-                    <Link
-                      to={`/products/${i}`}
-                      className="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-blue-600 to-cyan-500 px-3 py-2 text-white text-sm"
-                    >
-                      Get Quote
-                    </Link>
+                    <a
+                      href={`https://wa.me/917486933410?text=${encodeURIComponent(
+                        `Hi RadheAir, I'm interested in ${p.name}. Please share more details.`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl font-medium text-sm bg-[#25D366] text-white 
+                        hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] transition-all duration-200">
+                      <FaWhatsapp className="w-5 h-5" />
+                      Enquire
+                    </a>
                   </div>
                 </div>
               </motion.div>
